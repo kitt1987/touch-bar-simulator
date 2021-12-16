@@ -4,7 +4,7 @@ import Defaults
 
 final class TouchBarWindow: NSPanel {
 	// TODO: Migrate this to not use `Codable`.
-	enum Docking: String, Codable {
+	enum Docking: String, Codable, DefaultsSerializable {
 		case floating
 		case dockedToTop
 		case dockedToBottom
@@ -146,7 +146,7 @@ final class TouchBarWindow: NSPanel {
 				detectionRect = CGRect(
 					x: 0,
 					// Without `+ 1`, the Touch Bar would glitch (toggling rapidly).
-					y: screenFrame.height - frame.height - NSStatusBar.system.thickness - Defaults[.windowPadding] + 1,
+					y: screenFrame.height - frame.height - NSStatusBar.system.thickness - Defaults[.windowPadding] + 1.0,
 					width: visibleFrame.width,
 					height: frame.height + NSStatusBar.system.thickness + Defaults[.windowPadding]
 				)

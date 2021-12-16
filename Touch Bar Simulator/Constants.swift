@@ -6,6 +6,8 @@ enum Constants {
 	static let windowAutosaveName = "TouchBarWindow"
 }
 
+extension CGPoint: DefaultsSerializable{}
+
 extension Defaults.Keys {
 	static let windowTransparency = Key<Double>("windowTransparency", default: 0.75)
 	static let windowDocking = Key<TouchBarWindow.Docking>("windowDocking", default: .floating)
