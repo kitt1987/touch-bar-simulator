@@ -13,6 +13,13 @@ final class TouchBarView: NSView {
 		wantsLayer = true
 		start()
 		setFrameSize(DFRGetScreenSize())
+		
+		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onWakeNote(note:)), name: NSWorkspace.didWakeNotification, object: nil)
+	}
+	
+	@objc func onWakeNote(note: NSNotification) {
+		stop()
+		start()
 	}
 
 	@available(*, unavailable)
